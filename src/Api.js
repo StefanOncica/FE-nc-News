@@ -11,7 +11,13 @@ export const fetchAllUsers = () => {
 };
 
 export const fetchAllArticles = () => {
-  return newsApi.get('/articles').then(({data})=>{
+  return newsApi.get(`/articles`).then(({data})=>{
     return data.articles
+  })
+}
+
+export const fetchArticleById = (id) => {
+  return newsApi.get(`/articles/${id}`).then(({data})=>{
+    return data
   })
 }

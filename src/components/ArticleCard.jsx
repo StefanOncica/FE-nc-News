@@ -1,7 +1,13 @@
+import { Link } from "react-router-dom";
+
+
 function ArticleCard({ article }) {
+    
   return (
     <section>
+      <Link to={`/articles/${article.article_id}`}>
       <h5>Tittle: {article.title}</h5>
+      </Link>
       <h6>Author: {article.author}</h6>
       <p>Topic: {article.topic}</p>
       <p>Total votes: {article.votes}</p>
@@ -15,7 +21,7 @@ function ArticleCard({ article }) {
         alt={`picture about ${article.topic}`}
       />
   </section>
-  );
+  )
 }
 
 export default ArticleCard;

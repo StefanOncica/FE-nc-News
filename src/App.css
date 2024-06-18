@@ -31,3 +31,9 @@ img {
   gap: 10px
 
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

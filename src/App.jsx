@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { fetchAllArticles } from "../src/Api";
 import "./App.css";
 import Header from "./components/Header";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import AllArticles from "./components/AllArticles";
-import { fetchAllArticles } from "../src/Api";
+import ArticleBodyById from "./components/ArticleBodyById";
 
 function App() {
   const [user, setUser] = useState();
   const [allArticles, setAllArticles] = useState([]);
-
+  const [articleId, setArticleId] = useState()
 
   useEffect(() => {
     fetchAllArticles().then((data) => {
@@ -28,7 +29,12 @@ function App() {
           <Route path="/" element={<Home allArticles={allArticles} />} />
           <Route
             path="/articles"
-            element={<AllArticles allArticles={allArticles} />}
+            element={<AllArticles allArticles={allArticles} setArticleId={setArticleId} />}
+          />
+
+          <Route
+            path="/articles/:id"
+            element={<ArticleBodyById  />}
           />
         </Routes>
       </BrowserRouter>

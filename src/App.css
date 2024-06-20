@@ -48,3 +48,16 @@ textarea {
   width: 400px;
   height: 60px
 }
+
+.comment-count {
+  position:fixed;
+  position:sticky top;
+  bottom: 0px;
+  right: 10px;
+  padding: 5px;
+
+  background-color:rgba(0, 0, 0, 0.856);
+  color: rgb(255, 255, 255);
+ 
+}
+

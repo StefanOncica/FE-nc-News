@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
+  deleteComment,
   fetchArticleById,
   fetchCommentsById,
   postComment,
@@ -22,6 +23,12 @@ function ArticleBodyById({ user }) {
 
   const [newCommentExists, setNewCommentExists] = useState(1);
 
+  const [postingComment, setPostingComment] = useState(false)
+
+  const [isCommentDeleted, setIsCommentDeleted] = useState(1);
+
+  const [isDeletingComment, setIsDeletingComment] = useState(false)
+
   useEffect(() => {
     setIsLoading(true);
     fetchArticleById(id).then((data) => {
@@ -35,7 +42,7 @@ function ArticleBodyById({ user }) {
     fetchCommentsById(id).then((data) => {
       setCommentsById(data.comments);
     });
-  }, [newCommentExists]);
+  }, [newCommentExists, isCommentDeleted]);
 
   function handleLike(event) {
     event.preventDefault();
@@ -47,7 +54,9 @@ function ArticleBodyById({ user }) {
   function handleSubmit(event) {
     event.preventDefault();
     if (commentInput) {
+      setPostingComment(true)
       postComment(id, commentInput, user).then((response) => {
+        setPostingComment(false)
         if (response.status === 201) {
           setNewCommentExists((curr) => {
             return curr + 1;
@@ -61,6 +70,21 @@ function ArticleBodyById({ user }) {
   function handleChange(event) {
     setCommentInput(event.target.value);
   }
+
+  function handleClickDelete(event) {
+    const commentId = event.target.value;
+    setIsDeletingComment(true)
+    deleteComment(commentId).then(() => {
+      setIsDeletingComment(false)
+      setIsCommentDeleted((curr) => {
+        return curr + 1;
+      });
+    });
+  }
+
+  const totalCommentsByUser = commentsById.filter(
+    (comment) => comment.author === user
+  );
 
   return !isLoading ? (
     <div>
@@ -92,7 +116,12 @@ function ArticleBodyById({ user }) {
           required
         ></textarea>
         <div>
-          <button> Add comment</button>
+          {postingComment?(<p>Adding comment...</p>):''}
+          
+          <button> Add a new comment</button>
+          {user ? (<p className="comment-count">
+              {!isDeletingComment ? `You have ${totalCommentsByUser.length} comments on this article.` : 'Deleting in progress...'}
+            </p>) : ("")}
         </div>
       </form>
 
@@ -102,6 +131,13 @@ function ArticleBodyById({ user }) {
             <li key={comment.comment_id}>
               <h5>{comment.author}:</h5>
               <p>{comment.body}</p>
+              {comment.author === user ? (
+                <button onClick={handleClickDelete} value={comment.comment_id}>
+                  Delete comment
+                </button>
+              ) : (
+                ""
+              )}
             </li>
           );
         })}

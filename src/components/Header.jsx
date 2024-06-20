@@ -47,7 +47,7 @@ function Header({ user, setUser }) {
         </p>
 
       <div className="dropdown">
-        <button className="dropbtn">Users</button>
+        <button className="dropbtn">Sign in</button>
         <select className="dropdown-content" onChange={HandleUser}>
           <option key="0000" value={undefined}>
             ----

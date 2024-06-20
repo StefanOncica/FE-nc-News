@@ -34,9 +34,10 @@ function App() {
 
           <Route
             path="/articles/:id"
-            element={<ArticleBodyById  />}
+            element={<ArticleBodyById user={user}  />}
           />
         </Routes>
+        
       </BrowserRouter>
     </main>
   );

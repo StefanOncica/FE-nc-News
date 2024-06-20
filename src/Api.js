@@ -44,3 +44,8 @@ export const postComment = (id, body, user) => {
     })
     
 };
+
+export const deleteComment = (id) => {
+  return newsApi
+    .delete(`/comments/${id}`)
+}

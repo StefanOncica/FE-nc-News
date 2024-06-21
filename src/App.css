@@ -1,22 +1,53 @@
 html {
-  background-color: rgb(211, 211, 194);
+  background-color: rgb(110, 102, 55);
 }
 header {
   border: 2px solid black;
-  background-color: rgb(158, 188, 192);
+  background-color: rgb(188, 189, 155);
+}
+
+.article-by-id {
+  
+  background-color:  #33333341
+}
+
+.article-comments{
+  background-color: rgb(188, 189, 155);
+}
+a {
+  font-size: 18px
+}
+.user-top-icon{
+  position:absolute;
+
+  border-radius: 20px;
+
+  top: 5px;
+  right: 5px;
+  padding: 0px;
+}
+
+.user-img{
+  width: 50px;
+  height: 50px;
+  border-radius: 20px
 }
 
 .home {
-  background-color: rgb(233, 231, 148);
+  background-color: rgb(188, 189, 155);
 }
 
 .all-articles {
-  background-color: rgb(180, 179, 111);
+  background-color: rgb(188, 189, 155);
 }
 
 .article-card {
   border: 2px solid black;
   width: 200px;
+  background-color:  #33333341;
+  line-height: 17px;
+  margin-top: 0px;
+
 }
 
 img {
@@ -61,3 +92,32 @@ textarea {
  
 }
 
+.main-navigation {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #33333341;
+
+}
+
+.main-link a {
+  float: left;
+  display: block;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-radius: 10px
+}
+
+.main-link :hover {
+  background-color:  rgb(188, 189, 155);
+  border: 1px rgb(1, 1, 2) inset;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
+  border-radius: 20px
+}
+
+select {
+  margin-bottom: 10px;
+}

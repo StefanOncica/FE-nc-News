@@ -53,7 +53,7 @@ function ArticleBodyById({ user }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (commentInput) {
+    if (commentInput && user) {
       setPostingComment(true)
       postComment(id, commentInput, user).then((response) => {
         setPostingComment(false)
@@ -63,7 +63,7 @@ function ArticleBodyById({ user }) {
           });
         }
       });
-      setCommentInput("");
+      setCommentInput("")
     }
   }
 
@@ -87,7 +87,10 @@ function ArticleBodyById({ user }) {
   );
 
   return !isLoading ? (
-    <div>
+    <div className="article-comments">
+      <section className="article-by-id">
+
+      
       <h2> {articleById.title} </h2>
       <h3> by: {articleById.author}</h3>
       <img src={articleById.article_img_url} alt="" />
@@ -102,12 +105,14 @@ function ArticleBodyById({ user }) {
           Dislike{" "}
         </button>
       </div>
+
+      </section>
       <h4>Comments: </h4>
       <form onSubmit={handleSubmit} className="comment-form">
         <p>
           {user
             ? "Type your comment bellow."
-            : "You must sign in before you can post a comment."}
+            : " <!> You must sign in before you can post a comment. <!>"}
         </p>
         <textarea
           onChange={handleChange}
@@ -129,7 +134,9 @@ function ArticleBodyById({ user }) {
         {commentsById.map((comment) => {
           return (
             <li key={comment.comment_id}>
-              <h5>{comment.author}:</h5>
+              <h4>{comment.author}:</h4>
+              <p>Created: {comment.created_at.split("T")[0]}{" "}
+              {comment.created_at.split("T")[1].split(".")[0]} </p>
               <p>{comment.body}</p>
               {comment.author === user ? (
                 <button onClick={handleClickDelete} value={comment.comment_id}>

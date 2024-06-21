@@ -1,11 +1,26 @@
+import { useSearchParams } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 
 function AllArticles({ allArticles }) {
+  const [topics, setTopics] = useSearchParams();
+
+  const currentTopic = topics.get("topic");
+
+  let currentArticles = []
+  if (!currentTopic) {
+    currentArticles = [...allArticles] 
+  }else{
+    currentArticles = allArticles.filter((article) => article.topic===currentTopic)
+  }
+
+  function HandleSort () {
+
+  }
   return (
     <section className="all-articles">
-      <h3> Total articles {allArticles.length} </h3>
+      <p> Total articles {currentArticles.length}</p>
       <ul className="articles-container">
-        {allArticles.map((article) => {
+        {currentArticles.map((article) => {
           return (
             <li className="article-card" key={article.article_id}>
               <ArticleCard article={article} />

@@ -17,34 +17,59 @@ function Header({ user, setUser }) {
   function HandleUser(event) {
     event.preventDefault();
     if (event.target.value === "----") {
-        setUser(undefined);
+      setUser(undefined);
     } else {
-        setUser(event.target.value);
+      setUser(event.target.value);
     }
   }
 
   return (
     <header>
-      <h1>Welcome to the NC News Page ! </h1>
-
+      <div className="top-header">
+        <h1>Welcome to the Northcoders News Page ! </h1>
+        <ul className="user-top-icon">
+          {allUsers.map((element) => {
+            if (element.username === user) {
+              return (
+                <li className="user-top-icon" key={element.username}>
+                  <img
+                    className="user-img"
+                    src={element.avatar_url}
+                    alt="user icon"
+                  />
+                </li>
+              );
+            }
+          })}
+        </ul>
+      </div>
       <nav>
-        <ul>
-          <li key="home">
+        <ul className="main-navigation">
+          <li className="main-link" key="home">
             <Link to="/">Home</Link>
           </li>
-          <li key="allItems">
+          <li className="main-link" key="coding">
+            <Link to="/articles?topic=coding">Coding</Link>
+          </li>
+          <li className="main-link" key="football">
+            <Link to="/articles?topic=football">Football</Link>
+          </li>
+          <li className="main-link" key="cooking">
+            <Link to="/articles?topic=cooking">Cooking</Link>
+          </li>
+          <li className="main-link" key="allItems">
             <Link to="/articles">See All Articles</Link>
           </li>
         </ul>
       </nav>
 
-        <p>
-          {user === undefined
-            ? isLoading
-              ? "LOADING... "
-              : "You are NOT signed in!"
-            : `Signed in as: ${user}`}
-        </p>
+      <p>
+        {user === undefined
+          ? isLoading
+            ? "LOADING... "
+            : "You are NOT signed in!"
+          : `Signed in as: ${user}`}
+      </p>
 
       <div className="dropdown">
         <button className="dropbtn">Sign in</button>

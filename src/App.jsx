@@ -9,16 +9,8 @@ import ArticleBodyById from "./components/ArticleBodyById";
 
 function App() {
   const [user, setUser] = useState();
-  const [allArticles, setAllArticles] = useState([]);
   const [articleId, setArticleId] = useState()
-
-  useEffect(() => {
-    fetchAllArticles().then((data) => {
-      setAllArticles(() => {
-        return [...data];
-      });
-    });
-  }, []);
+  
 
   return (
     <main>
@@ -26,10 +18,10 @@ function App() {
         <Header user={user} setUser={setUser} />
 
         <Routes>
-          <Route path="/" element={<Home allArticles={allArticles} />} />
+          <Route path="/" element={<Home />} />
           <Route
             path="/articles"
-            element={<AllArticles allArticles={allArticles} setArticleId={setArticleId} />}
+            element={<AllArticles/>}
           />
 
           <Route

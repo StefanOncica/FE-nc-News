@@ -46,7 +46,7 @@ function Header({ user, setUser }) {
       <nav>
         <ul className="main-navigation">
           <li className="main-link" key="home">
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li className="main-link" key="coding">
             <Link to="/articles?topic=coding">Coding</Link>

@@ -7,30 +7,41 @@ header {
 }
 
 .article-by-id {
-  
-  background-color:  #33333341
+  border: solid black 2px;
+  margin-top: 15px;
+  background-color: rgb(219, 221, 171);
 }
 
-.article-comments{
+.article-comments {
   background-color: rgb(188, 189, 155);
 }
 a {
-  font-size: 18px
+  font-size: 17px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
-.user-top-icon{
-  position:absolute;
 
+h4{
+  margin-top: 10px;
+  margin-bottom: 0;
+  list-style-position: center;
+}
+h5{
+  margin-bottom: 0px;
+  align: center
+}
+.user-top-icon {
+  position: absolute;
   border-radius: 20px;
-
   top: 5px;
   right: 5px;
   padding: 0px;
 }
 
-.user-img{
+.user-img {
   width: 50px;
   height: 50px;
-  border-radius: 20px
+  border-radius: 20px;
 }
 
 .home {
@@ -41,24 +52,46 @@ a {
   background-color: rgb(188, 189, 155);
 }
 
-.article-card {
-  border: 2px solid black;
-  width: 200px;
-  background-color:  #33333341;
-  line-height: 17px;
-  margin-top: 0px;
+.articles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 10px;
+}
 
+.article-card {
+  display: inline-block;
+  border: 2px solid black;
+  width: 378px;
+  background-color: rgb(219, 221, 171);
+}
+h3 {
+  height: 70px;
+  width: 390px;
+  margin-bottom: 0;
+}
+
+.votes {
+  margin-left: 10px;
+  margin-top: 10px;
+  background-color: rgb(255, 0, 0);
+}
+
+progress::-webkit-progress-bar {
+  background-color: rgb(156, 117, 86);
+  height: 16px;
+}
+progress::-webkit-progress-value {
+  background-color: rgba(213, 216, 26, 0.822);
+  box-shadow: 1px 1px 5px 3px rgba(10, 9, 9, 0.582);
 }
 
 img {
-  width: 200px;
-  height: 200px;
-}
-
-.articles-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
+  margin-top: 0px;
+  width: 375px;
+  height: 300px;
+  border: solid black 2px;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 ul {
@@ -77,19 +110,18 @@ ul {
 
 textarea {
   width: 400px;
-  height: 60px
+  height: 60px;
 }
 
 .comment-count {
-  position:fixed;
-  position:sticky top;
+  position: fixed;
+  position: sticky top;
   bottom: 0px;
   right: 10px;
   padding: 5px;
 
-  background-color:rgba(0, 0, 0, 0.856);
+  background-color: rgba(0, 0, 0, 0.856);
   color: rgb(255, 255, 255);
- 
 }
 
 .main-navigation {
@@ -98,7 +130,6 @@ textarea {
   padding: 0;
   overflow: hidden;
   background-color: #33333341;
-
 }
 
 .main-link a {
@@ -108,14 +139,15 @@ textarea {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  border-radius: 10px
+  border-radius: 10px;
+  font-size: 25px
 }
 
 .main-link :hover {
-  background-color:  rgb(188, 189, 155);
+  background-color: rgb(188, 189, 155);
   border: 1px rgb(1, 1, 2) inset;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
-  border-radius: 20px
+  border-radius: 20px;
 }
 
 select {

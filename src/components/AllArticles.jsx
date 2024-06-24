@@ -3,7 +3,7 @@ import ArticleCard from "./ArticleCard";
 import { useEffect, useState } from "react";
 import { fetchAllArticles } from "../Api";
 
-function AllArticles() {
+function AllArticles({ user, setArticleId }) {
   const [topics, setTopics] = useSearchParams();
 
   const currentTopic = topics.get("topic");
@@ -13,6 +13,8 @@ function AllArticles() {
   const [orderBy, SetOrderBy] = useState("Descending");
 
   const [sortBy, SetSortBy] = useState();
+
+  const [maxVotes, setMaxVotes] = useState()
 
   useEffect(() => {
     fetchAllArticles().then((data) => {
@@ -59,6 +61,7 @@ function AllArticles() {
   function handleSort(event) {
     event.preventDefault();
     SetSortBy(event.target.value);
+    setMaxVotes(Math.max(...allArticles.map((article) => article.votes)))
   }
 
   return (
@@ -87,7 +90,7 @@ function AllArticles() {
         {allArticles.map((article) => {
           return (
             <li className="article-card" key={article.article_id}>
-              <ArticleCard article={article} />
+              <ArticleCard article={article} maxVotes={maxVotes}/>
             </li>
           );
         })}

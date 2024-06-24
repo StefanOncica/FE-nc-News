@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { fetchAllArticles } from "../src/Api";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -18,10 +17,10 @@ function App() {
         <Header user={user} setUser={setUser} />
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route
             path="/articles"
-            element={<AllArticles/>}
+            element={<AllArticles user= {user} setArticleId={setArticleId} />}
           />
 
           <Route

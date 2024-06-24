@@ -99,10 +99,10 @@ function ArticleBodyById({ user }) {
 
       <div className="like-dislike-buttons">
         <button onClick={handleLike} value={1}>
-          Like
+          UpVote
         </button>
         <button onClick={handleLike} value={-1}>
-          Dislike{" "}
+          DownVote{" "}
         </button>
       </div>
 
@@ -151,7 +151,7 @@ function ArticleBodyById({ user }) {
       </ul>
     </div>
   ) : (
-    <h3> Fetching Data ... </h3>
+    <h3> Fetching Article for you ... </h3>
   );
 }
 
